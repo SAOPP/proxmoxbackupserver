@@ -19,3 +19,4 @@ RUN chsh -s /bin/bash backup
 COPY entrypoint.sh /
 RUN chmod a+x /entrypoint.sh
 STOPSIGNAL SIGINT
+ENTRYPOINT ["/entrypoint.sh"]
