@@ -16,7 +16,7 @@ RUN apt-get install -y proxmox-backup-server=1.0.9-1
 RUN chsh -s /bin/bash backup
 
 #Delete enterprise repository
-rm -f /etc/apt/sources.list.d/pbs-enterprise.list
+RUN rm -f /etc/apt/sources.list.d/pbs-enterprise.list
 
 #Start...
 COPY entrypoint.sh /
