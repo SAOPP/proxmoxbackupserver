@@ -1,24 +1,25 @@
 FROM debian:buster
+MAINTAINER Soul Assassino
 
 #Install dependencies
-RUN apt-get update
-RUN apt-get install wget ca-certificates -y
+RUN apt-get update && apt-get install -y wget ca-certificates gnupg --no-install-recommends
 
 #Add repository
-RUN echo "deb http://download.proxmox.com/debian/pbs buster pbs-no-subscription" > /etc/apt/sources.list.d/pbs-no-subscription.list
-RUN wget http://download.proxmox.com/debian/proxmox-ve-release-6.x.gpg -O /etc/apt/trusted.gpg.d/proxmox-ve-release-6.x.gpg
+RUN wget http://download.proxmox.com/debian/proxmox-ve-release-6.x.gpg -O /etc/apt/trusted.gpg.d/proxmox-ve-release-6.x.gpg \
+    && echo "deb http://download.proxmox.com/debian/pbs buster pbs-no-subscription" > /etc/apt/sources.list.d/pbs.list
 
 #Install packages
-RUN apt-get update
-RUN apt-get install -y proxmox-backup-server=1.0.9-1
+RUN apt-get update \
+    && apt-get install -y proxmox-backup-server \
+    && rm -f /etc/apt/sources.list.d/pbs-enterprise.list
 
 #Activate backup user
 RUN chsh -s /bin/bash backup
 
-#Delete enterprise repository
-RUN rm -f /etc/apt/sources.list.d/pbs-enterprise.list
+#Start
+VOLUME /backup
+EXPOSE 8007
 
-#Start...
 COPY entrypoint.sh /
 RUN chmod a+x /entrypoint.sh
 STOPSIGNAL SIGINT
