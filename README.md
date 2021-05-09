@@ -19,4 +19,4 @@ services:
       - /sharedfolders/Docker/pbs:/etc/proxmox-backup
       - /sharedfolders/Docker/pbs-storage:/datastore
     restart: unless-stopped
-    ```
+```
