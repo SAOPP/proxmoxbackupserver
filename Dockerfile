@@ -17,7 +17,7 @@ RUN apt-get update \
 RUN chsh -s /bin/bash backup
 
 #Start
-VOLUME /backup
+VOLUME /datastore
 EXPOSE 8007
 
 COPY entrypoint.sh /
