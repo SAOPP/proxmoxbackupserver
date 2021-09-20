@@ -10,7 +10,7 @@ RUN wget https://enterprise.proxmox.com/debian/proxmox-release-bullseye.gpg -O /
 
 #Install packages
 RUN apt-get update \
-    && apt-get install -y proxmox-backup-server \
+    && apt-get install -y proxmox-backup \
     && rm -f /etc/apt/sources.list.d/pbs-enterprise.list
 
 #Activate backup user
