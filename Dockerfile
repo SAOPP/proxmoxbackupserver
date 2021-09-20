@@ -5,7 +5,7 @@ MAINTAINER Soul Assassino
 RUN apt-get update && apt-get install -y wget ca-certificates gnupg --no-install-recommends
 
 #Add repository
-RUN wget https://enterprise.proxmox.com/debian/proxmox-release-bullseye.gpg -O /etc/apt/trusted.gpg.d/proxmox-release-bullseye.gpg \
+RUN deb http://download.proxmox.com/debian/pbs bullseye pbs-no-subscription -O /etc/apt/trusted.gpg.d/proxmox-release-bullseye.gpg \
     && echo "deb http://download.proxmox.com/debian/pbs bullseye pbs-no-subscription" > /etc/apt/sources.list
 
 #Install packages
