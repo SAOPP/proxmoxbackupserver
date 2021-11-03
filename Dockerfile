@@ -33,7 +33,7 @@ RUN apt-get update && apt-get install -y wget ca-certificates gnupg --no-install
 
 # Add repository
 RUN wget https://enterprise.proxmox.com/debian/proxmox-release-bullseye.gpg -O /etc/apt/trusted.gpg.d/proxmox-release-bullseye.gpg \
-    && echo "deb http://download.proxmox.com/debian/pbs bullseye pbs-no-subscription" > /etc/apt/sources.list.d/pbs.list
+    && echo "deb http://download.proxmox.com/debian/pbs bullseye pbs-no-subscription" > /etc/apt/sources.list
 
 # Install packages
 RUN apt-get update \
