@@ -29,7 +29,8 @@ FROM debian
 MAINTAINER Soul Assassino
 
 # Install dependencies
-RUN apt-get update && apt-get install wget ca-certificates gnupg apt-utils -y --no-install-recommends
+RUN apt-get update && apt-get install -y --no-install-recommends apt-utils
+RUN apt-get update && apt-get install -y --no-install-recommends wget ca-certificates gnupg
 
 # Add repository
 RUN wget https://enterprise.proxmox.com/debian/proxmox-release-bullseye.gpg -O /etc/apt/trusted.gpg.d/proxmox-release-bullseye.gpg \
