@@ -25,11 +25,11 @@
 # STOPSIGNAL SIGINT
 # ENTRYPOINT ["/entrypoint.sh"]
 
-FROM debian:bullseye
+FROM debian
 MAINTAINER Soul Assassino
 
 # Install dependencies
-RUN apt-get update && apt-get install -y wget ca-certificates gnupg apt-utils --no-install-recommends
+RUN apt-get update && apt-get install wget ca-certificates gnupg apt-utils -y --no-install-recommends
 
 # Add repository
 RUN wget https://enterprise.proxmox.com/debian/proxmox-release-bullseye.gpg -O /etc/apt/trusted.gpg.d/proxmox-release-bullseye.gpg \
@@ -37,7 +37,7 @@ RUN wget https://enterprise.proxmox.com/debian/proxmox-release-bullseye.gpg -O /
 
 # Install packages
 RUN apt-get update \
-    && apt-get install -y proxmox-backup-server \
+    && apt-get install proxmox-backup-server -y \
     && rm -f /etc/apt/sources.list.d/pbs-enterprise.list
 
 # Activate backup user
