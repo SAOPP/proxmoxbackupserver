@@ -25,11 +25,11 @@
 # STOPSIGNAL SIGINT
 # ENTRYPOINT ["/entrypoint.sh"]
 
-FROM debian:latest
+FROM debian:bullseye
 MAINTAINER Soul Assassino
 
 # Install dependencies
-RUN apt-get update && apt-get install -y wget ca-certificates gnupg --no-install-recommends
+RUN apt-get update && apt-get install -y wget ca-certificates gnupg apt-utils --no-install-recommends
 
 # Add repository
 RUN wget https://enterprise.proxmox.com/debian/proxmox-release-bullseye.gpg -O /etc/apt/trusted.gpg.d/proxmox-release-bullseye.gpg \
