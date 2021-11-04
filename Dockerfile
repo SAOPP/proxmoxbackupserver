@@ -25,7 +25,7 @@
 # STOPSIGNAL SIGINT
 # ENTRYPOINT ["/entrypoint.sh"]
 
-FROM debian:buster
+FROM ubuntu:latest
 MAINTAINER Soul Assassino
 
 # Install dependencies
