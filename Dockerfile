@@ -25,11 +25,11 @@
 # STOPSIGNAL SIGINT
 # ENTRYPOINT ["/entrypoint.sh"]
 
-FROM debian
+FROM debian:bullseye
 MAINTAINER Soul Assassino
 
 # Install dependencies
-RUN apt-get update && apt-get install -y --no-install-recommends apt-utils
+ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y --no-install-recommends wget ca-certificates gnupg
 
 # Add repository
