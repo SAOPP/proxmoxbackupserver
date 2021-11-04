@@ -25,7 +25,7 @@
 # STOPSIGNAL SIGINT
 # ENTRYPOINT ["/entrypoint.sh"]
 
-FROM debian:bullseye-slim
+FROM debian:buster
 MAINTAINER Soul Assassino
 
 # Install dependencies
