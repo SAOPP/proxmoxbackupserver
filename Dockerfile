@@ -29,11 +29,14 @@ FROM debian:bullseye
 MAINTAINER Soul Assassino
 
 # Install dependencies
-ARG DEBIAN_FRONTEND=noninteractive
+#ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y --no-install-recommends wget ca-certificates gnupg
 
 # Add repository
 RUN wget https://enterprise.proxmox.com/debian/proxmox-release-bullseye.gpg -O /etc/apt/trusted.gpg.d/proxmox-release-bullseye.gpg \
+    && echo "deb http://ftp.debian.org/debian bullseye main contrib" > /etc/apt/sources.list \
+    && echo "deb http://ftp.debian.org/debian bullseye-updates main contrib" > /etc/apt/sources.list \
+    && echo "deb http://security.debian.org/debian-security bullseye-security main contrib" > /etc/apt/sources.list \
     && echo "deb http://download.proxmox.com/debian/pbs bullseye pbs-no-subscription" > /etc/apt/sources.list
 
 # Install packages
